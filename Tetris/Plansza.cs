@@ -33,81 +33,23 @@ namespace Tetris
             }
         }
 
-        public void PrzesuńWDół(Figura figura)
+        public void PrzesuńlubObróć(Figura figura, TrybRuchu trybRuchu)
         {
             CzyśćFigurę(figura);
-            RysujFigurę(figura.PrzesuńWDół());
-        }
-
-        public void PrzesuńWLewo(Figura figura)
-        {
-            CzyśćFigurę(figura);
-            RysujFigurę(figura.PrzesuńWLewo());
-        }
-
-        public void PrzesuńWPrawo(Figura figura)
-        {
-            CzyśćFigurę(figura);
-            RysujFigurę(figura.PrzesuńWPrawo());
-        }
-
-        public void Obróć(Figura figura)
-        {
-            CzyśćFigurę(figura);
-            RysujFigurę(figura.Obróc());
-        }
-
-        public bool CzyMożnaPrzesunąćWDół(Figura figura)
-        {
-            Figura kopiaWDół = (Figura)figura.Clone();
-            Figura różnicaPomiędzyOryginalnąAPrzesuniętą = figura.RóżnicaPomiędzyFigurami(kopiaWDół.PrzesuńWDół());
-
-            if (różnicaPomiędzyOryginalnąAPrzesuniętą.MinY < 0)
-                return false;
-            else
+            switch (trybRuchu)
             {
-                foreach (Klocek klocek in różnicaPomiędzyOryginalnąAPrzesuniętą.ListaKlocków)
-                {
-                    if (plansza[klocek.X, klocek.Y].Kolor != Color.Transparent)
-                        return false;
-                }
-                return true;
-            }
-        }
-
-        public bool CzyMożnaPrzesunąćWLewo(Figura figura)
-        {
-            Figura kopiaWLewo = (Figura)figura.Clone();
-            Figura różnicaPomiędzyOryginalnąAPrzesuniętą = figura.RóżnicaPomiędzyFigurami(kopiaWLewo.PrzesuńWLewo());
-
-            if (różnicaPomiędzyOryginalnąAPrzesuniętą.MinX < 0)
-                return false;
-            else
-            {
-                foreach (Klocek klocek in różnicaPomiędzyOryginalnąAPrzesuniętą.ListaKlocków)
-                {
-                    if (plansza[klocek.X, klocek.Y].Kolor != Color.Transparent)
-                        return false;
-                }
-                return true;
-            }
-        }
-
-        public bool CzyMożnaPrzesunąćWPrawo(Figura figura)
-        {
-            Figura kopiaWPrawo = (Figura)figura.Clone();
-            Figura różnicaPomiędzyOryginalnąAPrzesuniętą = figura.RóżnicaPomiędzyFigurami(kopiaWPrawo.PrzesuńWPrawo());
-
-            if (różnicaPomiędzyOryginalnąAPrzesuniętą.MaxX > 9)
-                return false;
-            else
-            {
-                foreach (Klocek klocek in różnicaPomiędzyOryginalnąAPrzesuniętą.ListaKlocków)
-                {
-                    if (plansza[klocek.X, klocek.Y].Kolor != Color.Transparent)
-                        return false;
-                }
-                return true;
+                case TrybRuchu.PrzesuńWDół:
+                    RysujFigurę(figura.PrzesuńWDół());
+                    break;
+                case TrybRuchu.PrzesuńWLewo:
+                    RysujFigurę(figura.PrzesuńWLewo());
+                    break;
+                case TrybRuchu.PrzesuńWPrawo:
+                    RysujFigurę(figura.PrzesuńWPrawo());
+                    break;
+                case TrybRuchu.Obróc:
+                    RysujFigurę(figura.Obróc());
+                    break;
             }
         }
 
