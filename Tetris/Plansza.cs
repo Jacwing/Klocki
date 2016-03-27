@@ -5,7 +5,7 @@ namespace Tetris
     public class Plansza
     {
         public Klocek[,] plansza = new Klocek[10, 20];
-
+        
         public void InicjalizujPlanszę()
         {
             for (int i = 0; i < plansza.GetLength(0); i++)
@@ -33,24 +33,45 @@ namespace Tetris
             }
         }
 
-        public void PrzesuńlubObróć(Figura figura, TrybRuchu trybRuchu)
+        public bool PrzesuńlubObróć(Figura figura, TrybRuchu trybRuchu)
         {
-            CzyśćFigurę(figura);
+            bool wynik = false;
             switch (trybRuchu)
             {
                 case TrybRuchu.PrzesuńWDół:
-                    RysujFigurę(figura.PrzesuńWDół());
+                    if (CzyMożnaObrócićLubPrzesunąć(figura, trybRuchu))
+                    {
+                        CzyśćFigurę(figura);
+                        RysujFigurę(figura.PrzesuńWDół());
+                        wynik = true;
+                    }
                     break;
                 case TrybRuchu.PrzesuńWLewo:
-                    RysujFigurę(figura.PrzesuńWLewo());
+                    if (CzyMożnaObrócićLubPrzesunąć(figura, trybRuchu))
+                    {
+                        CzyśćFigurę(figura);
+                        RysujFigurę(figura.PrzesuńWLewo());
+                        wynik = true;
+                    }
                     break;
                 case TrybRuchu.PrzesuńWPrawo:
-                    RysujFigurę(figura.PrzesuńWPrawo());
+                    if (CzyMożnaObrócićLubPrzesunąć(figura, trybRuchu))
+                    {
+                        CzyśćFigurę(figura);
+                        RysujFigurę(figura.PrzesuńWPrawo());
+                        wynik = true;
+                    }
                     break;
                 case TrybRuchu.Obróc:
-                    RysujFigurę(figura.Obróc());
+                    if (CzyMożnaObrócićLubPrzesunąć(figura, trybRuchu))
+                    {
+                        CzyśćFigurę(figura);
+                        RysujFigurę(figura.Obróc());
+                        wynik = true;
+                    }
                     break;
             }
+            return wynik;
         }
 
         public bool CzyMożnaObrócićLubPrzesunąć(Figura figura, TrybRuchu trybRuchu)
@@ -85,13 +106,5 @@ namespace Tetris
                 return true;
             }
         }
-    }
-
-    public enum TrybRuchu
-    {
-        PrzesuńWDół,
-        PrzesuńWLewo,
-        PrzesuńWPrawo,
-        Obróc
     }
 }

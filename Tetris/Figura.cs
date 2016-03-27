@@ -4,17 +4,6 @@ using System.Drawing;
 
 namespace Tetris
 {
-    enum KszałtFigury
-    {
-        TetriminoI,
-        TetriminoT,
-        TetriminoO,
-        TetriminoL,
-        TetriminoJ,
-        TetriminoS,
-        TetriminoZ
-    }
-
     public class Figura : ICloneable
     {
         public Color Kolor { get; set; }

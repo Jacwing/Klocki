@@ -15,14 +15,11 @@ namespace TestTetrisa
             p.InicjalizujPlanszę();
             Figura f = Figura.LosujFigurę();
             p.RysujFigurę(f);
-            if (p.CzyMożnaPrzesunąćWDół(f))
-                p.PrzesuńWDół(f);
-            if (p.CzyMożnaObrócić(f))
-                p.Obróć(f);
-            if (p.CzyMożnaPrzesunąćWLewo(f))
-                p.PrzesuńWLewo(f);
-            if (p.CzyMożnaObrócić(f))
-                p.Obróć(f);
+            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
+            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWLewo);
+            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWPrawo);
+            p.PrzesuńlubObróć(f, TrybRuchu.Obróc);
+
 
         }
     }
