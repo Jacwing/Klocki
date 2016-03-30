@@ -6,19 +6,39 @@
         xmlns:local="clr-namespace:TetrisFrontEnd"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid >
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate_Level2">
+            <!--<Button Background="{Binding Szczotka}" Height="10" Width="10" Margin="1"/>-->
+            <Border Background="{Binding Szczotka}" Height="10" Width="10" Margin="1"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DataTemplate_Level1">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="35"/>
-            <ColumnDefinition Width="185*"/>
-            <ColumnDefinition Width="262*"/>
-            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="Plansza" Grid.Column="1"  Grid.Row="1" ItemsSource="{Binding Path=Kolekcja}" />
-
+        <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10">
+            <ItemsControl Name="Klocki" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
+        </Grid>
+        <Button x:Name="button" Content="Button" Grid.Column="2" Grid.Row="1"  Margin="20" Click="button_Click"/>
     </Grid>
 </Window>

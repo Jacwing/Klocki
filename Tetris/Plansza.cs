@@ -1,19 +1,26 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Drawing;
 
 namespace Tetris
 {
     public class Plansza
     {
-        public Klocek[,] plansza = new Klocek[10, 20];
-        
+        public Klocek[,] plansza = new Klocek[10, 20]; //zamienić na ObservovableCollection
+        public ObservableCollection<List<Klocek>> plansza_1 = new ObservableCollection<List<Klocek>>();
+
+
         public void InicjalizujPlanszę()
         {
             for (int i = 0; i < plansza.GetLength(0); i++)
             {
+                List<Klocek> wierszKlocków = new List<Klocek>();
                 for (int j = 0; j < plansza.GetLength(1); j++)
                 {
                     plansza[i, j] = new Klocek(i, j);
+                   wierszKlocków.Add(new Klocek(i, j));
                 }
+                plansza_1.Add(wierszKlocków);
             }
         }
 
@@ -22,6 +29,7 @@ namespace Tetris
             foreach (Klocek klocek in figura.ListaKlocków)
             {
                 plansza[klocek.X, klocek.Y].Kolor = figura.Kolor;
+                //plansza_1[klocek.X][klocek.Y].Kolor = figura.Kolor;
             }
         }
 
@@ -30,6 +38,7 @@ namespace Tetris
             foreach (Klocek klocek in figura.ListaKlocków)
             {
                 plansza[klocek.X, klocek.Y].Kolor = Color.Transparent;
+                //plansza_1[klocek.X][klocek.Y].Kolor = Color.Transparent;
             }
         }
 
