@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Windows.Media;
 
 namespace Tetris
 {
     public class Figura : ICloneable
     {
-        public Color Kolor { get; set; }
+        public Brush Kolor { get; set; }
         public List<Klocek> ListaKlocków { get; set; }
         private Dictionary<string, int> obszarOgraniczający = new Dictionary<string, int>();
 
@@ -28,90 +28,90 @@ namespace Tetris
             switch (wylosowanyKształt)
             {
                 case KszałtFigury.TetriminoI:
-                    figura.Kolor = Color.Aqua;
+                    figura.Kolor = Brushes.Aqua;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor),
-                                                            new Klocek(5, 17, figura.Kolor),
-                                                            new Klocek(5, 16, figura.Kolor)});
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor),
+                                                            new Klocek(5, 2, figura.Kolor),
+                                                            new Klocek(5, 3, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 5;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 16;
+                    figura.obszarOgraniczający["MaxY"] = 3;
+                    figura.obszarOgraniczający["MinY"] = 0;
 
 
                     break;
                 case KszałtFigury.TetriminoT:
-                    figura.Kolor = Color.Tomato;
+                    figura.Kolor = Brushes.Tomato;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 19, figura.Kolor),
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(6, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor)});
+                                                            new Klocek(4, 0, figura.Kolor),
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(6, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 5;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 16;
+                    figura.obszarOgraniczający["MaxY"] = 1;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
                 case KszałtFigury.TetriminoO:
-                    figura.Kolor = Color.Yellow;
+                    figura.Kolor = Brushes.Yellow;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 19, figura.Kolor),
-                                                            new Klocek(4, 18, figura.Kolor),
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor)});
+                                                            new Klocek(4, 0, figura.Kolor),
+                                                            new Klocek(4, 1, figura.Kolor),
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 5;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 20;
-                    figura.obszarOgraniczający["MinY"] = 17;
+                    figura.obszarOgraniczający["MaxY"] = 1;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
                 case KszałtFigury.TetriminoL:
-                    figura.Kolor = Color.Violet;
+                    figura.Kolor = Brushes.Violet;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 19, figura.Kolor),
-                                                            new Klocek(4, 18, figura.Kolor),
-                                                            new Klocek(4, 17, figura.Kolor),
-                                                            new Klocek(5, 17, figura.Kolor)});
+                                                            new Klocek(4, 0, figura.Kolor),
+                                                            new Klocek(4, 1, figura.Kolor),
+                                                            new Klocek(4, 2, figura.Kolor),
+                                                            new Klocek(5, 2, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 5;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 16;
+                    figura.obszarOgraniczający["MaxY"] = 2;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
                 case KszałtFigury.TetriminoJ:
-                    figura.Kolor = Color.Purple;
+                    figura.Kolor = Brushes.Purple;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor),
-                                                            new Klocek(5, 17, figura.Kolor),
-                                                            new Klocek(4, 17, figura.Kolor)});
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor),
+                                                            new Klocek(5, 2, figura.Kolor),
+                                                            new Klocek(4, 2, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 5;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 16;
+                    figura.obszarOgraniczający["MaxY"] = 2;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
                 case KszałtFigury.TetriminoS:
-                    figura.Kolor = Color.Olive;
+                    figura.Kolor = Brushes.Olive;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor),
-                                                            new Klocek(4, 18, figura.Kolor),
-                                                            new Klocek(6, 19, figura.Kolor)});
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor),
+                                                            new Klocek(4, 1, figura.Kolor),
+                                                            new Klocek(6, 0, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 7;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 18;
+                    figura.obszarOgraniczający["MaxY"] = 1;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
                 case KszałtFigury.TetriminoZ:
-                    figura.Kolor = Color.Magenta;
+                    figura.Kolor = Brushes.Magenta;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 19, figura.Kolor),
-                                                            new Klocek(5, 18, figura.Kolor),
-                                                            new Klocek(4, 19, figura.Kolor),
-                                                            new Klocek(6, 18, figura.Kolor)});
+                                                            new Klocek(5, 0, figura.Kolor),
+                                                            new Klocek(5, 1, figura.Kolor),
+                                                            new Klocek(4, 0, figura.Kolor),
+                                                            new Klocek(6, 1, figura.Kolor)});
                     figura.obszarOgraniczający["MaxX"] = 7;
                     figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 19;
-                    figura.obszarOgraniczający["MinY"] = 18;
+                    figura.obszarOgraniczający["MaxY"] = 1;
+                    figura.obszarOgraniczający["MinY"] = 0;
                     break;
             }
 
@@ -122,12 +122,12 @@ namespace Tetris
         public Figura PrzesuńWDół()
         {
             if (this.obszarOgraniczający.ContainsKey("MaxY"))
-                this.obszarOgraniczający["MaxY"]--;
+                this.obszarOgraniczający["MaxY"]++;
             if (this.obszarOgraniczający.ContainsKey("MinY"))
-                this.obszarOgraniczający["MinY"]--;
+                this.obszarOgraniczający["MinY"]++;
             foreach (Klocek klocek in this.ListaKlocków)
             {
-                klocek.Y--;
+                klocek.Y++;
             }
             return this;
         }
@@ -158,6 +158,7 @@ namespace Tetris
             return this;
         }
 
+        //zmienić algorytm obrotów
         public Figura Obróc()
         {
             if ((this.obszarOgraniczający["MaxX"] - this.obszarOgraniczający["MinX"]) == 2) //pionowo

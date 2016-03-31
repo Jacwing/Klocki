@@ -1,22 +1,35 @@
 ﻿using System;
-using System.Drawing;
+using System.ComponentModel;
+using System.Windows.Media;
 
 namespace Tetris
 {
-    public class Klocek : IEquatable<Klocek>, ICloneable
+    public class Klocek : IEquatable<Klocek>, ICloneable, INotifyPropertyChanged
     {
+        private Brush kolor;
         public int X { get; set; }
         public int Y { get; set; }
-        public Color Kolor { get; set; }
+        public Brush Kolor
+        {
+            get { return kolor; }
+            set
+            {
+                if (kolor != value)
+                {
+                    kolor = value;
+                    OnPropertyChanged("Kolor");
+                }
+            }
+        }
 
         public Klocek(int x, int y)
         {
             this.X = x;
             this.Y = y;
-            this.Kolor = Color.Transparent;
+            this.Kolor = Brushes.Transparent;
         }
 
-        public Klocek(int x, int y, Color kolor)
+        public Klocek(int x, int y, Brush kolor)
         {
             this.X = x;
             this.Y = y;
@@ -35,6 +48,14 @@ namespace Tetris
         {
             Klocek klocek = new Klocek(this.X, this.Y, this.Kolor);
             return klocek;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

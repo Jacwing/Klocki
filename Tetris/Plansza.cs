@@ -1,26 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
+using System.Windows.Media;
 
 namespace Tetris
 {
     public class Plansza
     {
-        public Klocek[,] plansza = new Klocek[10, 20]; //zamienić na ObservovableCollection
-        public ObservableCollection<List<Klocek>> plansza_1 = new ObservableCollection<List<Klocek>>();
+        public List<List<Klocek>> Klocki = new List<List<Klocek>>();
 
 
         public void InicjalizujPlanszę()
         {
-            for (int i = 0; i < plansza.GetLength(0); i++)
+            for (int i = 0; i < 20; i++)
             {
-                List<Klocek> wierszKlocków = new List<Klocek>();
-                for (int j = 0; j < plansza.GetLength(1); j++)
+                Klocki.Add(new List<Klocek>());
+                for (int j = 0; j < 10; j++)
                 {
-                    plansza[i, j] = new Klocek(i, j);
-                   wierszKlocków.Add(new Klocek(i, j));
+                    Klocki[i].Add(new Klocek(i, j));
                 }
-                plansza_1.Add(wierszKlocków);
             }
         }
 
@@ -28,8 +24,7 @@ namespace Tetris
         {
             foreach (Klocek klocek in figura.ListaKlocków)
             {
-                plansza[klocek.X, klocek.Y].Kolor = figura.Kolor;
-                //plansza_1[klocek.X][klocek.Y].Kolor = figura.Kolor;
+                Klocki[klocek.Y][klocek.X].Kolor = figura.Kolor;
             }
         }
 
@@ -37,8 +32,7 @@ namespace Tetris
         {
             foreach (Klocek klocek in figura.ListaKlocków)
             {
-                plansza[klocek.X, klocek.Y].Kolor = Color.Transparent;
-                //plansza_1[klocek.X][klocek.Y].Kolor = Color.Transparent;
+                Klocki[klocek.Y][klocek.X].Kolor = Brushes.Transparent;
             }
         }
 
@@ -103,13 +97,13 @@ namespace Tetris
             }
             Figura różnicaPomiędzyOryginalnąAPrzesuniętą = figura.RóżnicaPomiędzyFigurami(kopia);
 
-            if ((różnicaPomiędzyOryginalnąAPrzesuniętą.MaxX > 9) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MinX < 0) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MinY < 0) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MinY > 19))
+            if ((różnicaPomiędzyOryginalnąAPrzesuniętą.MaxX > 9) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MinX < 0) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MinY < 0) || (różnicaPomiędzyOryginalnąAPrzesuniętą.MaxY > 19))
                 return false;
             else
             {
                 foreach (Klocek klocek in różnicaPomiędzyOryginalnąAPrzesuniętą.ListaKlocków)
                 {
-                    if (plansza[klocek.X, klocek.Y].Kolor != Color.Transparent)
+                    if (Klocki[klocek.Y][klocek.X].Kolor != Brushes.Transparent)
                         return false;
                 }
                 return true;

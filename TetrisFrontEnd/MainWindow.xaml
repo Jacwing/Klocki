@@ -8,8 +8,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate_Level2">
-            <!--<Button Background="{Binding Szczotka}" Height="10" Width="10" Margin="1"/>-->
-            <Border Background="{Binding Szczotka}" Height="10" Width="10" Margin="1"/>
+            <Border Background="{Binding Kolor}" Height="10" Width="10" Margin="0.5" BorderBrush="Black" BorderThickness="0.5"/>
         </DataTemplate>
 
         <DataTemplate x:Key="DataTemplate_Level1">
@@ -26,8 +25,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -36,9 +35,9 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10">
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10" Grid.RowSpan="2">
             <ItemsControl Name="Klocki" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
         </Grid>
-        <Button x:Name="button" Content="Button" Grid.Column="2" Grid.Row="1"  Margin="20" Click="button_Click"/>
+        <Button Content="Button" Grid.Column="2" Grid.Row="1" Margin="8" Click="Button_Click"/>
     </Grid>
 </Window>

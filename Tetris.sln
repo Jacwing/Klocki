@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetris", "Tetris\Tetris.csproj", "{E997C093-5A17-4E54-86A1-4ED5455E0C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTetrisa", "TestTetrisa\TestTetrisa.csproj", "{67A7C394-B286-4ECE-8995-9ECB83473065}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TetrisFrontEnd", "TetrisFrontEnd\TetrisFrontEnd.csproj", "{FF559D00-7F3F-4037-AEF5-C32F70ECC859}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{E997C093-5A17-4E54-86A1-4ED5455E0C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E997C093-5A17-4E54-86A1-4ED5455E0C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E997C093-5A17-4E54-86A1-4ED5455E0C83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67A7C394-B286-4ECE-8995-9ECB83473065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67A7C394-B286-4ECE-8995-9ECB83473065}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67A7C394-B286-4ECE-8995-9ECB83473065}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67A7C394-B286-4ECE-8995-9ECB83473065}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF559D00-7F3F-4037-AEF5-C32F70ECC859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF559D00-7F3F-4037-AEF5-C32F70ECC859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF559D00-7F3F-4037-AEF5-C32F70ECC859}.Release|Any CPU.ActiveCfg = Release|Any CPU
