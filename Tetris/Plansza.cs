@@ -20,11 +20,22 @@ namespace Tetris
             }
         }
 
+        //sprawdzić czy można narysować nową figurę
+        public bool RysujFiguręZeSprawdzeniem(Figura figura)
+        {
+            bool wynik = false;
+            foreach (Klocek klocek in figura.ListaKlocków)
+            {
+                Klocki[klocek.Y][klocek.X].Kolor = klocek.Kolor;
+            }
+            return wynik;
+        }
+
         public void RysujFigurę(Figura figura)
         {
             foreach (Klocek klocek in figura.ListaKlocków)
             {
-                Klocki[klocek.Y][klocek.X].Kolor = figura.Kolor;
+                Klocki[klocek.Y][klocek.X].Kolor = klocek.Kolor;
             }
         }
 

@@ -1,10 +1,6 @@
 ﻿using System.Windows;
-using System.Collections.Generic;
-using System;
-using System.Reflection;
-using System.ComponentModel;
-using System.Windows.Media;
 using Tetris;
+using System.Windows.Input;
 
 namespace TetrisFrontEnd
 {
@@ -24,11 +20,30 @@ namespace TetrisFrontEnd
             p.RysujFigurę(f);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
-            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
-            p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWLewo);
+            if (e.Key == Key.Left)
+            {
+                p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWLewo);
+            }
+            else if (e.Key == Key.Right)
+            {
+                p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWPrawo);
+            }
+            else if (e.Key == Key.Down)
+            {
+                p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
+            }
+            else if (e.Key == Key.Up)
+            {
+                p.PrzesuńlubObróć(f, TrybRuchu.Obróc);
+            }
+            else if (e.Key == Key.N)
+            {
+                f = Figura.LosujFigurę();
+                p.RysujFigurę(f);
+            }
+
         }
     }
 }

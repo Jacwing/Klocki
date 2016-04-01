@@ -6,12 +6,7 @@ namespace Tetris
 {
     public class Figura : ICloneable
     {
-        public Brush Kolor { get; set; }
         public List<Klocek> ListaKlocków { get; set; }
-        private Dictionary<string, int> obszarOgraniczający = new Dictionary<string, int>();
-
-
-
 
         static public Figura LosujFigurę()
         {
@@ -20,111 +15,66 @@ namespace Tetris
             KszałtFigury wylosowanyKształt = (KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length));
 
             Figura figura = new Figura();
-            figura.obszarOgraniczający.Add("MaxX", 0);
-            figura.obszarOgraniczający.Add("MaxY", 0);
-            figura.obszarOgraniczający.Add("MinX", 0);
-            figura.obszarOgraniczający.Add("MinY", 0);
             List<Klocek> kształt = null;
             switch (wylosowanyKształt)
             {
                 case KszałtFigury.TetriminoI:
-                    figura.Kolor = Brushes.Aqua;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor),
-                                                            new Klocek(5, 2, figura.Kolor),
-                                                            new Klocek(5, 3, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 5;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 3;
-                    figura.obszarOgraniczający["MinY"] = 0;
-
+                                                            new Klocek(5, 0, Brushes.DarkGray),
+                                                            new Klocek(5, 1, Brushes.DarkGray),
+                                                            new Klocek(5, 2, Brushes.DarkGray),
+                                                            new Klocek(5, 3, Brushes.DarkGray)});
 
                     break;
                 case KszałtFigury.TetriminoT:
-                    figura.Kolor = Brushes.Tomato;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, figura.Kolor),
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(6, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 5;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 1;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(4, 0, Brushes.Tomato),
+                                                            new Klocek(5, 0, Brushes.Tomato),
+                                                            new Klocek(6, 0, Brushes.Tomato),
+                                                            new Klocek(5, 1, Brushes.Tomato)});
                     break;
                 case KszałtFigury.TetriminoO:
-                    figura.Kolor = Brushes.Yellow;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, figura.Kolor),
-                                                            new Klocek(4, 1, figura.Kolor),
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 5;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 1;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(4, 0, Brushes.Yellow),
+                                                            new Klocek(4, 1, Brushes.Yellow),
+                                                            new Klocek(5, 0, Brushes.Yellow),
+                                                            new Klocek(5, 1, Brushes.Yellow)});
                     break;
                 case KszałtFigury.TetriminoL:
-                    figura.Kolor = Brushes.Violet;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, figura.Kolor),
-                                                            new Klocek(4, 1, figura.Kolor),
-                                                            new Klocek(4, 2, figura.Kolor),
-                                                            new Klocek(5, 2, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 5;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 2;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(4, 0, Brushes.DarkOrange),
+                                                            new Klocek(4, 1, Brushes.DarkOrange),
+                                                            new Klocek(4, 2, Brushes.DarkOrange),
+                                                            new Klocek(5, 2, Brushes.DarkOrange)});
                     break;
                 case KszałtFigury.TetriminoJ:
-                    figura.Kolor = Brushes.Purple;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor),
-                                                            new Klocek(5, 2, figura.Kolor),
-                                                            new Klocek(4, 2, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 5;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 2;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(5, 0, Brushes.Gold),
+                                                            new Klocek(5, 1, Brushes.Gold),
+                                                            new Klocek(5, 2, Brushes.Gold),
+                                                            new Klocek(4, 2, Brushes.Gold)});
                     break;
                 case KszałtFigury.TetriminoS:
-                    figura.Kolor = Brushes.Olive;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor),
-                                                            new Klocek(4, 1, figura.Kolor),
-                                                            new Klocek(6, 0, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 7;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 1;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(5, 0, Brushes.Olive),
+                                                            new Klocek(5, 1, Brushes.Olive),
+                                                            new Klocek(4, 1, Brushes.Olive),
+                                                            new Klocek(6, 0, Brushes.Olive)});
                     break;
                 case KszałtFigury.TetriminoZ:
-                    figura.Kolor = Brushes.Magenta;
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, figura.Kolor),
-                                                            new Klocek(5, 1, figura.Kolor),
-                                                            new Klocek(4, 0, figura.Kolor),
-                                                            new Klocek(6, 1, figura.Kolor)});
-                    figura.obszarOgraniczający["MaxX"] = 7;
-                    figura.obszarOgraniczający["MinX"] = 4;
-                    figura.obszarOgraniczający["MaxY"] = 1;
-                    figura.obszarOgraniczający["MinY"] = 0;
+                                                            new Klocek(5, 0, Brushes.Magenta),
+                                                            new Klocek(5, 1, Brushes.Magenta),
+                                                            new Klocek(4, 0, Brushes.Magenta),
+                                                            new Klocek(6, 1, Brushes.Magenta)});
                     break;
             }
-
             figura.ListaKlocków = kształt;
             return figura;
         }
 
         public Figura PrzesuńWDół()
         {
-            if (this.obszarOgraniczający.ContainsKey("MaxY"))
-                this.obszarOgraniczający["MaxY"]++;
-            if (this.obszarOgraniczający.ContainsKey("MinY"))
-                this.obszarOgraniczający["MinY"]++;
             foreach (Klocek klocek in this.ListaKlocków)
             {
                 klocek.Y++;
@@ -134,10 +84,6 @@ namespace Tetris
 
         public Figura PrzesuńWLewo()
         {
-            if (this.obszarOgraniczający.ContainsKey("MaxX"))
-                this.obszarOgraniczający["MaxX"]--;
-            if (this.obszarOgraniczający.ContainsKey("MinX"))
-                this.obszarOgraniczający["MinX"]--;
             foreach (Klocek klocek in this.ListaKlocków)
             {
                 klocek.X--;
@@ -147,54 +93,50 @@ namespace Tetris
 
         public Figura PrzesuńWPrawo()
         {
-            if (this.obszarOgraniczający.ContainsKey("MaxX"))
-                this.obszarOgraniczający["MaxX"]++;
-            if (this.obszarOgraniczający.ContainsKey("MinX"))
-                this.obszarOgraniczający["MinX"]++;
             foreach (Klocek klocek in this.ListaKlocków)
             {
                 klocek.X++;
             }
             return this;
         }
-
-        //zmienić algorytm obrotów
+        
         public Figura Obróc()
         {
-            if ((this.obszarOgraniczający["MaxX"] - this.obszarOgraniczający["MinX"]) == 2) //pionowo
+            int tempMinX = this.MinX;
+            int tempMinY = this.MinY;
+            int tempMaxX = this.MaxX;
+            int tempMaxY = this.MaxY;
+            if (((tempMaxX - tempMinX) == 1) && ((tempMaxY - tempMinY) == 2))
             {
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]+1, this.obszarOgraniczający["MaxY"]-1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]+1, this.obszarOgraniczający["MinY"]+1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MaxY"]-1), new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MaxY"]-1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MaxY"]-1), new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MinY"]+1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MinY"]+1), new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MaxY"]-1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MinY"]+1), new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MinY"]+1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]-1, this.obszarOgraniczający["MaxY"]-1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]-1, this.obszarOgraniczający["MinY"]+1));
-
-                this.obszarOgraniczający["MaxX"]++;
-                this.obszarOgraniczający["MinX"]--;
-                this.obszarOgraniczający["MaxY"]--;
-                this.obszarOgraniczający["MinY"]++;
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY), new Klocek(tempMinX + 2, tempMinY + 1));
+                ZamieńKlocki(new Klocek(tempMinX + 1, tempMinY), new Klocek(tempMinX + 2, tempMinY + 2));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY + 1), new Klocek(tempMinX, tempMinY));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY + 2), new Klocek(tempMinX, tempMinY + 1));
+                ZamieńKlocki(new Klocek(tempMinX + 1, tempMinY + 2), new Klocek(tempMinX, tempMinY + 2));
+                ZamieńKlocki(new Klocek(tempMinX + 1, tempMinY + 1), new Klocek(tempMinX + 1, tempMinY + 2));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY), new Klocek(tempMinX + 1, tempMinY + 1));
             }
-            else //poziomo
+            else if (((tempMaxX - tempMinX) == 2) && ((tempMaxY - tempMinY) == 1))
             {
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MaxY"]+1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"], this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MaxY"]+1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MaxY"]));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MaxY"]));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MinY"]));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MinY"]));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MinY"]), new Klocek(this.obszarOgraniczający["MinX"]+1, this.obszarOgraniczający["MinY"]-1));
-                ZamieńKlocki(new Klocek(this.obszarOgraniczający["MaxX"], this.obszarOgraniczający["MaxY"]), new Klocek(this.obszarOgraniczający["MaxX"]-1, this.obszarOgraniczający["MinY"]-1));
-
-                this.obszarOgraniczający["MaxX"]--;
-                this.obszarOgraniczający["MinX"]++;
-                this.obszarOgraniczający["MaxY"]++;
-                this.obszarOgraniczający["MinY"]--;
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY), new Klocek(tempMinX + 1, tempMinY - 1));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY + 1), new Klocek(tempMinX, tempMinY - 1));
+                ZamieńKlocki(new Klocek(tempMinX + 1, tempMinY + 1), new Klocek(tempMinX, tempMinY));
+                ZamieńKlocki(new Klocek(tempMinX + 2, tempMinY + 1), new Klocek(tempMinX, tempMinY + 1));
+                ZamieńKlocki(new Klocek(tempMinX + 2, tempMinY), new Klocek(tempMinX + 1, tempMinY + 1));
             }
-
-
+            else if (((tempMaxX - tempMinX) == 0) && ((tempMaxY - tempMinY) == 3))
+            {
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY), new Klocek(tempMinX + 2, tempMinY + 2));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY + 1), new Klocek(tempMinX + 1, tempMinY + 2));
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY + 3), new Klocek(tempMinX - 1, tempMinY + 2));
+            }
+            else if (((tempMaxX - tempMinX) == 3) && ((tempMaxY - tempMinY) == 0))
+            {
+                ZamieńKlocki(new Klocek(tempMinX, tempMinY), new Klocek(tempMinX + 1, tempMinY - 2));
+                ZamieńKlocki(new Klocek(tempMinX + 1, tempMinY), new Klocek(tempMinX + 1, tempMinY - 1));
+                ZamieńKlocki(new Klocek(tempMinX + 2, tempMinY), new Klocek(tempMinX + 1, tempMinY));
+                ZamieńKlocki(new Klocek(tempMinX + 3, tempMinY), new Klocek(tempMinX + 1, tempMinY + 1));
+            }
             return this;
         }
 
@@ -259,7 +201,6 @@ namespace Tetris
         public Figura RóżnicaPomiędzyFigurami(Figura porównywanaFigura)
         {
             Figura figura = new Figura();
-            figura.Kolor = this.Kolor;
             figura.ListaKlocków = new List<Klocek>();
             foreach (Klocek klocek in porównywanaFigura.ListaKlocków)
             {
@@ -272,13 +213,11 @@ namespace Tetris
         public object Clone()
         {
             Figura figura = new Figura();
-            figura.Kolor = this.Kolor;
             figura.ListaKlocków = new List<Klocek>();
             foreach (Klocek klocek in this.ListaKlocków)
             {
                 figura.ListaKlocków.Add((Klocek)klocek.Clone());
             }
-            figura.obszarOgraniczający = new Dictionary<string, int>(this.obszarOgraniczający);
             return figura;
         }
 
