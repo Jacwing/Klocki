@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace Tetris
@@ -6,7 +7,6 @@ namespace Tetris
     public class Plansza
     {
         public List<List<Klocek>> Klocki = new List<List<Klocek>>();
-
 
         public void InicjalizujPlanszę()
         {
@@ -20,12 +20,13 @@ namespace Tetris
             }
         }
 
-        //sprawdzić czy można narysować nową figurę
         public bool RysujFiguręZeSprawdzeniem(Figura figura)
         {
-            bool wynik = false;
+            bool wynik = true;
             foreach (Klocek klocek in figura.ListaKlocków)
             {
+                if (Klocki[klocek.Y][klocek.X].Kolor != Brushes.Transparent)
+                    wynik = false;
                 Klocki[klocek.Y][klocek.X].Kolor = klocek.Kolor;
             }
             return wynik;
@@ -120,5 +121,40 @@ namespace Tetris
                 return true;
             }
         }
+
+        public void UsuńPełneWiersze()
+        {
+            foreach (List<Klocek> wierszKlocków in Klocki)
+            {
+                if (CzyWierszKlockówJestPełny(wierszKlocków))
+                {
+                    PresuńWierszePoniżej(Klocki.IndexOf(wierszKlocków));
+                }
+            }
+        }
+
+        private void PresuńWierszePoniżej(int numerWiersza)
+        {
+            for (int i  = numerWiersza; i > 0; i--)
+            {
+                foreach (Klocek klocek in Klocki[i])
+                {
+                    klocek.Kolor = Klocki[i - 1][klocek.Y].Kolor;
+                }
+            }
+        }
+
+        private bool CzyWierszKlockówJestPełny(List<Klocek> wierszKlocków)
+        {
+            bool wynik = true;
+            foreach (Klocek klocek in wierszKlocków)
+            {
+                if (klocek.Kolor == Brushes.Transparent)
+                    wynik = false;
+            }
+
+            return wynik;
+        }
+
     }
 }

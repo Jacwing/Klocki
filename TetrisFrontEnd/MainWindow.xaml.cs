@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using Tetris;
 using System.Windows.Input;
+using System.Windows.Threading;
+using System;
 
 namespace TetrisFrontEnd
 {
@@ -10,7 +12,8 @@ namespace TetrisFrontEnd
     public partial class MainWindow : Window
     {
         Plansza p = new Plansza();
-        Figura f = Figura.LosujFigurę();
+        Figura f = new Figura();
+        DispatcherTimer timer = new DispatcherTimer();
 
         public MainWindow()
         {
@@ -18,6 +21,22 @@ namespace TetrisFrontEnd
             InitializeComponent();
             Klocki.ItemsSource = p.Klocki;
             p.RysujFigurę(f);
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            bool czyMożnaPrzesunąćWDół = p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
+            if (!czyMożnaPrzesunąćWDół)
+            {
+                p.UsuńPełneWiersze();
+                f = new Figura();
+                bool czyMożnaNarysowaćNowąFigurę = p.RysujFiguręZeSprawdzeniem(f);
+                if (!czyMożnaNarysowaćNowąFigurę)
+                    timer.Stop();
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -38,12 +57,6 @@ namespace TetrisFrontEnd
             {
                 p.PrzesuńlubObróć(f, TrybRuchu.Obróc);
             }
-            else if (e.Key == Key.N)
-            {
-                f = Figura.LosujFigurę();
-                p.RysujFigurę(f);
-            }
-
         }
     }
 }

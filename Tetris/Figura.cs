@@ -8,14 +8,14 @@ namespace Tetris
     {
         public List<Klocek> ListaKlocków { get; set; }
 
-        static public Figura LosujFigurę()
+
+        public Figura()
         {
             Array listaKszałtów = Enum.GetValues(typeof(KszałtFigury));
             Random random = new Random(DateTime.Now.Millisecond);
             KszałtFigury wylosowanyKształt = (KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length));
-
-            Figura figura = new Figura();
             List<Klocek> kształt = null;
+
             switch (wylosowanyKształt)
             {
                 case KszałtFigury.TetriminoI:
@@ -69,8 +69,7 @@ namespace Tetris
                                                             new Klocek(6, 1, Brushes.Magenta)});
                     break;
             }
-            figura.ListaKlocków = kształt;
-            return figura;
+            this.ListaKlocków = kształt;
         }
 
         public Figura PrzesuńWDół()
