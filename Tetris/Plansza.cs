@@ -122,15 +122,18 @@ namespace Tetris
             }
         }
 
-        public void UsuńPełneWiersze()
+        public int UsuńPełneWiersze()
         {
+            int wynik = 0;
             foreach (List<Klocek> wierszKlocków in Klocki)
             {
                 if (CzyWierszKlockówJestPełny(wierszKlocków))
                 {
                     PresuńWierszePoniżej(Klocki.IndexOf(wierszKlocków));
+                    wynik++;
                 }
             }
+            return wynik;
         }
 
         private void PresuńWierszePoniżej(int numerWiersza)

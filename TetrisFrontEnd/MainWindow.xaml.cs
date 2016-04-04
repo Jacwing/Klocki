@@ -14,6 +14,7 @@ namespace TetrisFrontEnd
         Plansza p = new Plansza();
         Figura f = new Figura();
         DispatcherTimer timer = new DispatcherTimer();
+        int punktacja; 
 
         public MainWindow()
         {
@@ -21,7 +22,7 @@ namespace TetrisFrontEnd
             InitializeComponent();
             Klocki.ItemsSource = p.Klocki;
             p.RysujFigurę(f);
-            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += timer_Tick;
             timer.Start();
         }
@@ -31,7 +32,8 @@ namespace TetrisFrontEnd
             bool czyMożnaPrzesunąćWDół = p.PrzesuńlubObróć(f, TrybRuchu.PrzesuńWDół);
             if (!czyMożnaPrzesunąćWDół)
             {
-                p.UsuńPełneWiersze();
+                punktacja += p.UsuńPełneWiersze();
+                Punktacja.Content = (punktacja*10).ToString();
                 f = new Figura();
                 bool czyMożnaNarysowaćNowąFigurę = p.RysujFiguręZeSprawdzeniem(f);
                 if (!czyMożnaNarysowaćNowąFigurę)

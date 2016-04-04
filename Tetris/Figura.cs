@@ -12,7 +12,7 @@ namespace Tetris
         public Figura()
         {
             Array listaKszałtów = Enum.GetValues(typeof(KszałtFigury));
-            Random random = new Random(DateTime.Now.Millisecond);
+            Random random = new Random(DateTime.Now.Millisecond + DateTime.Now.Second + DateTime.Now.Minute);
             KszałtFigury wylosowanyKształt = (KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length));
             List<Klocek> kształt = null;
 
@@ -35,10 +35,10 @@ namespace Tetris
                     break;
                 case KszałtFigury.TetriminoO:
                     kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, Brushes.Yellow),
-                                                            new Klocek(4, 1, Brushes.Yellow),
-                                                            new Klocek(5, 0, Brushes.Yellow),
-                                                            new Klocek(5, 1, Brushes.Yellow)});
+                                                            new Klocek(4, 0, Brushes.Chocolate),
+                                                            new Klocek(4, 1, Brushes.Chocolate),
+                                                            new Klocek(5, 0, Brushes.Chocolate),
+                                                            new Klocek(5, 1, Brushes.Chocolate)});
                     break;
                 case KszałtFigury.TetriminoL:
                     kształt = new List<Klocek>(new Klocek[] {
@@ -98,7 +98,7 @@ namespace Tetris
             }
             return this;
         }
-        
+
         public Figura Obróc()
         {
             int tempMinX = this.MinX;
