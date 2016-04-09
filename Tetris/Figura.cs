@@ -9,6 +9,66 @@ namespace Tetris
         public List<Klocek> ListaKlocków { get; set; }
 
 
+        public Figura(KszałtFigury kszałtFigury, Klocek klocekStartowy)
+        {
+            List<Klocek> kształt = null;
+
+            switch (kszałtFigury)
+            {
+                case KszałtFigury.TetriminoI:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.DarkGray),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.DarkGray),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+2, Brushes.DarkGray),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+3, Brushes.DarkGray)});
+
+                    break;
+                case KszałtFigury.TetriminoT:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y, Brushes.Tomato),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Tomato),
+                                                            new Klocek(klocekStartowy.X+2, klocekStartowy.Y, Brushes.Tomato),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Tomato)});
+                    break;
+                case KszałtFigury.TetriminoO:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y,  Brushes.Chocolate),
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y+1, Brushes.Chocolate),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Chocolate),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Chocolate)});
+                    break;
+                case KszałtFigury.TetriminoL:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y, Brushes.DarkOrange),
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y+1, Brushes.DarkOrange),
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y+2, Brushes.DarkOrange),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+2, Brushes.DarkOrange)});
+                    break;
+                case KszałtFigury.TetriminoJ:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Gold),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Gold),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+2, Brushes.Gold),
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y+2, Brushes.Gold)});
+                    break;
+                case KszałtFigury.TetriminoS:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Olive),
+                                                            new Klocek(klocekStartowy.X+2, klocekStartowy.Y, Brushes.Olive),
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y+1, Brushes.Olive),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Olive)});
+                    break;
+                case KszałtFigury.TetriminoZ:
+                    kształt = new List<Klocek>(new Klocek[] {
+                                                            new Klocek(klocekStartowy.X, klocekStartowy.Y, Brushes.Magenta),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Magenta),
+                                                            new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Magenta),
+                                                            new Klocek(klocekStartowy.X+2, klocekStartowy.Y+1, Brushes.Magenta)});
+                    break;
+            }
+            this.ListaKlocków = kształt;
+        }
+
         public Figura()
         {
             Array listaKszałtów = Enum.GetValues(typeof(KszałtFigury));

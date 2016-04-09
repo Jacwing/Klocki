@@ -20,7 +20,6 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </DataTemplate>
-
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -35,15 +34,20 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="10" Grid.RowSpan="6"  Height="421" Width="211">
+        <Grid Grid.Column="1" Grid.Row="1"  Grid.RowSpan="6"  Height="421.25" Width="211.25">
             <Border BorderBrush="Black" BorderThickness="0.5">
-                <ItemsControl Name="Klocki" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
+                <ItemsControl Name="PlanszaDuża" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
             </Border>
         </Grid>
-        <Label Name="Punktacja" Grid.Column="2" Grid.Row="1" FontSize="35" HorizontalAlignment="Center"  />
+        <Label Name="Punktacja" Grid.Column="2" Grid.Row="1" FontSize="35" HorizontalAlignment="Left"  />
+        <Grid Grid.Column="2" Grid.Row="2" Height="85" Width="64" HorizontalAlignment="Left"  >
+            <Border BorderBrush="Black" BorderThickness="0.5">
+                <ItemsControl Name="PlanszaMała" ItemTemplate="{DynamicResource DataTemplate_Level1}"/>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

@@ -20,6 +20,18 @@ namespace Tetris
             }
         }
 
+        public Plansza(int szerokość, int wysokość)
+        {
+            for (int i = 0; i < wysokość; i++)
+            {
+                Klocki.Add(new List<Klocek>());
+                for (int j = 0; j < szerokość; j++)
+                {
+                    Klocki[i].Add(new Klocek(i, j));
+                }
+            }
+        }
+
         public bool RysujFiguręZeSprawdzeniem(Figura figura)
         {
             bool wynik = true;
@@ -128,6 +140,7 @@ namespace Tetris
             foreach (List<Klocek> wierszKlocków in Klocki)
             {
                 if (CzyWierszKlockówJestPełny(wierszKlocków))
+                //if (CzyWierszKlockówJestPełnyOpróczJedengo(wierszKlocków))
                 {
                     PresuńWierszePoniżej(Klocki.IndexOf(wierszKlocków));
                     wynik++;
@@ -157,6 +170,21 @@ namespace Tetris
             }
 
             return wynik;
+        }
+
+        private bool CzyWierszKlockówJestPełnyOpróczJedengo(List<Klocek> wierszKlocków)
+        {
+            int ilośćPustychKlocków = 0;
+            foreach (Klocek klocek in wierszKlocków)
+            {
+                if (klocek.Kolor == Brushes.Transparent)
+                    ilośćPustychKlocków++;
+            }
+
+            if (ilośćPustychKlocków < 2)
+                return true;
+            else
+                return false;
         }
 
     }
