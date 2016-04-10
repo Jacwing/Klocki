@@ -13,7 +13,7 @@ namespace TetrisFrontEnd
     public partial class MainWindow : Window
     {
         Plansza planszaDuża = new Plansza(10,20);
-        Plansza planszaMała = new Plansza(3,4);
+        Plansza planszaMała = new Plansza(5,6);
         Figura figuraPlanszaDuża, figuraPlanszaMała ;
         DispatcherTimer timer = new DispatcherTimer();
         int punktacja;
@@ -29,7 +29,7 @@ namespace TetrisFrontEnd
             PlanszaMała.ItemsSource = planszaMała.Klocki;
             listaWylosowanychKszałtów.Add((KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length)));
             listaWylosowanychKszałtów.Add((KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length)));
-            figuraPlanszaMała = new Figura(listaWylosowanychKszałtów[0], new Klocek(0, 0));
+            figuraPlanszaMała = new Figura(listaWylosowanychKszałtów[0], new Klocek(1, 1));
             figuraPlanszaDuża = new Figura(listaWylosowanychKszałtów[1], new Klocek(4, 0));
             planszaMała.RysujFigurę(figuraPlanszaMała);
             planszaDuża.RysujFigurę(figuraPlanszaDuża);
@@ -48,7 +48,7 @@ namespace TetrisFrontEnd
                 planszaMała.CzyśćFigurę(figuraPlanszaMała);
                 listaWylosowanychKszałtów.RemoveAt(1);
                 listaWylosowanychKszałtów.Insert(0, (KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length)));
-                figuraPlanszaMała = new Figura(listaWylosowanychKszałtów[0], new Klocek(0, 0));
+                figuraPlanszaMała = new Figura(listaWylosowanychKszałtów[0], new Klocek(1, 1));
                 figuraPlanszaDuża = new Figura(listaWylosowanychKszałtów[1], new Klocek(4, 0));
                 planszaMała.RysujFigurę(figuraPlanszaMała);
                 bool czyMożnaNarysowaćNowąFigurę = planszaDuża.RysujFiguręZeSprawdzeniem(figuraPlanszaDuża);
