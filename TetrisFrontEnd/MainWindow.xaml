@@ -6,7 +6,10 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:local="clr-namespace:TetrisFrontEnd"
                       mc:Ignorable="d"
-                      Title="Klocki" Height="600" Width="600" KeyDown="Window_KeyDown">
+                      Title="Klocki" Height="600" Width="600" KeyDown="Window_KeyDown" 
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      ShowIconOnTitleBar="True"
+                      Icon="blocks.ico">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate_Level2">
             <Border Background="{Binding Kolor}" Height="20" Width="20"  BorderBrush="Gray" BorderThickness="1"/>
