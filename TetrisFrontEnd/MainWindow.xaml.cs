@@ -1,16 +1,16 @@
-﻿using System.Windows;
-using Tetris;
+﻿using Tetris;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System;
 using System.Collections.Generic;
+using MahApps.Metro.Controls;
 
 namespace TetrisFrontEnd
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         Plansza planszaDuża = new Plansza(10,20);
         Plansza planszaMała = new Plansza(5,6);
