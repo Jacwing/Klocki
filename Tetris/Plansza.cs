@@ -8,18 +8,6 @@ namespace Tetris
     {
         public List<List<Klocek>> Klocki = new List<List<Klocek>>();
 
-        public void InicjalizujPlanszę()
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                Klocki.Add(new List<Klocek>());
-                for (int j = 0; j < 10; j++)
-                {
-                    Klocki[i].Add(new Klocek(i, j));
-                }
-            }
-        }
-
         public Plansza(int szerokość, int wysokość)
         {
             for (int i = 0; i < wysokość; i++)
@@ -28,6 +16,17 @@ namespace Tetris
                 for (int j = 0; j < szerokość; j++)
                 {
                     Klocki[i].Add(new Klocek(i, j));
+                }
+            }
+        }
+
+        public void CzyśćPlanszę()
+        {
+            foreach (List<Klocek> listaKlocków in Klocki)
+            {
+                foreach (Klocek klocek in listaKlocków)
+                {
+                    klocek.Kolor = Brushes.Transparent;
                 }
             }
         }
