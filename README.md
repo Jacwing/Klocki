@@ -1,3 +1,3 @@
-# Tetris
+# Klocki
 
 Moja wersja Tetrisa.
