@@ -8,6 +8,10 @@ namespace Tetris
     {
         public List<Klocek> ListaKlocków { get; set; }
 
+        private Figura()
+        {
+            ListaKlocków = new List<Klocek>();
+        }
 
         public Figura(KszałtFigury kszałtFigury, Klocek klocekStartowy)
         {
@@ -64,69 +68,6 @@ namespace Tetris
                                                             new Klocek(klocekStartowy.X+1, klocekStartowy.Y, Brushes.Magenta),
                                                             new Klocek(klocekStartowy.X+1, klocekStartowy.Y+1, Brushes.Magenta),
                                                             new Klocek(klocekStartowy.X+2, klocekStartowy.Y+1, Brushes.Magenta)});
-                    break;
-            }
-            this.ListaKlocków = kształt;
-        }
-
-        public Figura()
-        {
-            Array listaKszałtów = Enum.GetValues(typeof(KszałtFigury));
-            Random random = new Random(DateTime.Now.Millisecond + DateTime.Now.Second + DateTime.Now.Minute);
-            KszałtFigury wylosowanyKształt = (KszałtFigury)listaKszałtów.GetValue(random.Next(listaKszałtów.Length));
-            List<Klocek> kształt = null;
-
-            switch (wylosowanyKształt)
-            {
-                case KszałtFigury.TetriminoI:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, Brushes.DarkGray),
-                                                            new Klocek(5, 1, Brushes.DarkGray),
-                                                            new Klocek(5, 2, Brushes.DarkGray),
-                                                            new Klocek(5, 3, Brushes.DarkGray)});
-
-                    break;
-                case KszałtFigury.TetriminoT:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, Brushes.Tomato),
-                                                            new Klocek(5, 0, Brushes.Tomato),
-                                                            new Klocek(6, 0, Brushes.Tomato),
-                                                            new Klocek(5, 1, Brushes.Tomato)});
-                    break;
-                case KszałtFigury.TetriminoO:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, Brushes.Chocolate),
-                                                            new Klocek(4, 1, Brushes.Chocolate),
-                                                            new Klocek(5, 0, Brushes.Chocolate),
-                                                            new Klocek(5, 1, Brushes.Chocolate)});
-                    break;
-                case KszałtFigury.TetriminoL:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(4, 0, Brushes.DarkOrange),
-                                                            new Klocek(4, 1, Brushes.DarkOrange),
-                                                            new Klocek(4, 2, Brushes.DarkOrange),
-                                                            new Klocek(5, 2, Brushes.DarkOrange)});
-                    break;
-                case KszałtFigury.TetriminoJ:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, Brushes.Gold),
-                                                            new Klocek(5, 1, Brushes.Gold),
-                                                            new Klocek(5, 2, Brushes.Gold),
-                                                            new Klocek(4, 2, Brushes.Gold)});
-                    break;
-                case KszałtFigury.TetriminoS:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, Brushes.Olive),
-                                                            new Klocek(5, 1, Brushes.Olive),
-                                                            new Klocek(4, 1, Brushes.Olive),
-                                                            new Klocek(6, 0, Brushes.Olive)});
-                    break;
-                case KszałtFigury.TetriminoZ:
-                    kształt = new List<Klocek>(new Klocek[] {
-                                                            new Klocek(5, 0, Brushes.Magenta),
-                                                            new Klocek(5, 1, Brushes.Magenta),
-                                                            new Klocek(4, 0, Brushes.Magenta),
-                                                            new Klocek(6, 1, Brushes.Magenta)});
                     break;
             }
             this.ListaKlocków = kształt;
@@ -260,7 +201,6 @@ namespace Tetris
         public Figura RóżnicaPomiędzyFigurami(Figura porównywanaFigura)
         {
             Figura figura = new Figura();
-            figura.ListaKlocków = new List<Klocek>();
             foreach (Klocek klocek in porównywanaFigura.ListaKlocków)
             {
                 if (!this.ListaKlocków.Contains(klocek))
@@ -272,7 +212,6 @@ namespace Tetris
         public object Clone()
         {
             Figura figura = new Figura();
-            figura.ListaKlocków = new List<Klocek>();
             foreach (Klocek klocek in this.ListaKlocków)
             {
                 figura.ListaKlocków.Add((Klocek)klocek.Clone());
